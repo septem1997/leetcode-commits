@@ -30,15 +30,16 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let max = 0
-    for (let i = 0;i<prices.length;i++){
-        for (let j = i+1;j<prices.length;j++){
-            const price = prices[j] - prices[i]
-            if (price > max){
-                max = price
-            }
+    let min = prices[0], maxDis = 0
+    for (let i = 1;i<prices.length;i++){
+        if (prices[i]<min){
+            min = prices[i]
+        }
+        const dis = prices[i] - min
+        if (dis>maxDis){
+            maxDis = dis
         }
     }
-    return max
+    return maxDis
 };
 //leetcode submit region end(Prohibit modification and deletion)
