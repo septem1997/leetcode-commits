@@ -77,25 +77,15 @@ var isValidSudoku = function(board) {
             if (isNaN(num)){
                 continue
             }
-            if (sets['row'+i].has(num)){
-                // console.log('row',i,j)
-                return false
-            }else {
-                sets['row'+i].add(num)
-            }
-            if (sets['column'+j].has(num)){
-                // console.log('column',i,j)
-                return false
-            }else {
-                sets['column'+j].add(num)
-            }
             const block = Math.floor(i/3)*3+Math.floor(j/3)
-            if (sets['block'+block].has(num)){
-                // console.log('block',i,j)
+            if (sets['row'+i].has(num)||
+                sets['column'+j].has(num)||
+                sets['block'+block].has(num)){
                 return false
-            }else {
-                sets['block'+block].add(num)
             }
+            sets['row'+i].add(num)
+            sets['column'+j].add(num)
+            sets['block'+block].add(num)
         }
     }
     return true
