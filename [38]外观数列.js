@@ -60,12 +60,11 @@ const parseStr = (str) => {
         if (c === lastC) {
             count++
         } else {
-            res += '' + count + lastC
+            res += count + lastC
             count = 1
         }
         lastC = c
     }
-    res += '' + count + lastC
-    return res
+    return res + count + lastC
 }
 //leetcode submit region end(Prohibit modification and deletion)
